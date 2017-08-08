@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import CommentList from './CommentList'
 
 // export default function Article(props) {
@@ -12,6 +13,14 @@ import CommentList from './CommentList'
 // }
 
 export default class Article extends Component {
+    static propTypes = {
+        article: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            text: PropTypes.string
+        }).isRequired
+        // article: PropTypes.number
+    }
     constructor(props) {
         super(props);
 
