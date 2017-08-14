@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {findDOMNode} from 'react-dom'
 import PropTypes from 'prop-types'
 import CommentList from './CommentList'
 import toggleOpen from '../decorators/toggleOpen'
@@ -22,14 +23,29 @@ class Article extends Component {
         }).isRequired
         // article: PropTypes.number
     }
-    constructor(props) {
-        super(props);
+
+    componentWillReceiveProps (nextProps) {
+        console.log(`---, ${this.props.isOpen} -- ${nextProps.isOpen}` )
     }
+
+    componentWillMount() {
+        console.log("---, mounting")
+    }
+
+    componentDidMount() {
+        console.log("---, mounted")
+    }
+    
+    setContainerRef = ref => {
+        this.container = ref
+        console.log('---', ref)
+    }
+
     render() {
         const {article, isOpen, toggleOpen} = this.props;
         return (
-            <div>
-                <h3>{article.title}</h3>
+            <div ref = {this.setContainerRef}>
+                <h3>{article.title}!!!</h3>
                 <button onClick = {toggleOpen}>
                     {isOpen ? 'Close' : 'Open'}
                 </button>
@@ -43,10 +59,14 @@ class Article extends Component {
         return (
             <div>
                 <section>{article.text}</section>
-                <CommentList comments = {article.comments} />
+                <CommentList comments = {article.comments} ref = {this.setCommentsRef}/>
             </div>
         )
 
+    }
+
+    setCommentsRef = ref => {
+        console.log('---', findDOMNode(ref))
     }
 }
 export default toggleOpen(Article);
