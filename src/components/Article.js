@@ -69,4 +69,4 @@ class Article extends Component {
         console.log('---', findDOMNode(ref))
     }
 }
-export default toggleOpen(Article);
+export default Article
