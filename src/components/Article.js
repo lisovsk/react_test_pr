@@ -4,16 +4,6 @@ import PropTypes from 'prop-types'
 import CommentList from './CommentList'
 import toggleOpen from '../decorators/toggleOpen'
 
-// export default function Article(props) {
-//     const {article} = props;
-//     return (
-//         <div>
-//             <h3>{article.title}</h3>
-//             <section>{article.text}</section>
-//         </div>
-//     )
-// }
-
 class Article extends Component {
     static propTypes = {
         article: PropTypes.shape({
