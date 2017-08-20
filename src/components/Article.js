@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import React, {Component, PureComponent} from 'react'
 import {findDOMNode} from 'react-dom'
 import PropTypes from 'prop-types'
 import CommentList from './CommentList'
 import toggleOpen from '../decorators/toggleOpen'
 
-class Article extends Component {
+class Article extends PureComponent {
     static propTypes = {
         article: PropTypes.shape({
             id: PropTypes.string.isRequired,
@@ -16,24 +16,29 @@ class Article extends Component {
         toggleOpen: PropTypes.func
     }
 
-    componentWillReceiveProps (nextProps) {
-        console.log(`---, ${this.props.isOpen} -- ${nextProps.isOpen}` )
-    }
+    // componentWillReceiveProps (nextProps) {
+    //     console.log(`---, ${this.props.isOpen} -- ${nextProps.isOpen}` )
+    // }
 
-    componentWillMount() {
-        console.log("---, mounting")
-    }
+    // componentWillMount() {
+    //     console.log("---, mounting")
+    // }
 
-    componentDidMount() {
-        console.log("---, mounted")
-    }
+    // componentDidMount() {
+    //     console.log("---, mounted")
+    // }
     
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     return nextProps.isOpen !== this.props.isOpen
+    // }
+
     setContainerRef = ref => {
         this.container = ref
-        console.log('---', ref)
+        // console.log('---', ref)
     }
 
     render() {
+        console.log('---', 'update article')
         const {article, isOpen, toggleOpen} = this.props;
         return (
             <div ref = {this.setContainerRef}>
@@ -58,7 +63,7 @@ class Article extends Component {
     }
 
     setCommentsRef = ref => {
-        console.log('---', findDOMNode(ref))
+        // console.log('---', findDOMNode(ref))
     }
 }
 export default Article

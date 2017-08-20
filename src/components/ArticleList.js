@@ -20,10 +20,9 @@ class ArticleList extends Component  {
     }
     render() {
         const {articles, toggleOpenItem : toggleOpenArticle, openItemID : openArticleID} = this.props
-        const articleElems = articles.map((article) => <li key = {article.id}>
+        const articleElems = articles.map((article) => <li key = {article.id} onClick = {toggleOpenArticle.bind(this, article.id)} >
             <Article article = {article}
             isOpen = {article.id === openArticleID}
-            toggleOpen = {toggleOpenArticle.bind(this, article.id)}
              />
         </li>)
 
