@@ -2,10 +2,15 @@ import React, {Component as ReactComponent} from 'react';
 import PropTypes from 'prop-types'
 
 export default (OriginalComponent) => class WrappedAccordion extends ReactComponent {
-        
-    state = {
-        openItemID: null,
-    }
+    constructor(props) {
+        super(props)
+        this.state = {
+            openItemID: props.defaultOpenId
+        }
+    } 
+    // state = {
+    //     openItemID: null,
+    // }
 
     toggleOpenItem = (openItemID) => {
         if(openItemID === this.state.openItemID) {
