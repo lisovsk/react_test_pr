@@ -5,7 +5,9 @@ import ArticleCart from './ArticleCart'
 import UserForm from './UserForm'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
-
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import "react-day-picker/lib/style.css";
+import Input from './Input'
 class App extends Component {
 
     state = {
@@ -22,7 +24,9 @@ class App extends Component {
         }))
         return (
             <div>
+                <Input type = {"text"} dataMin = {5} dataMax = {10} />
                 <UserForm />
+                <DayPickerInput placeholder="DD/MM/YYYY" format="DD/MM/YYYY" />
                 <Select options = {options} value = {this.state.selection} onChange = {this.changeSelection} multi />
                 <ArticleList articles = {articles} defaultOpenId = {articles[0].id}/>
                 <ArticleCart articles = {articles} /> 
