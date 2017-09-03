@@ -8,6 +8,7 @@ import 'react-select/dist/react-select.css';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import Input from './Input';
+import Counter from './Counter';
 class App extends Component {
   state = {
     selection: null
@@ -23,6 +24,7 @@ class App extends Component {
     }));
     return (
       <div>
+        <Counter />
         <UserForm />
         <DayPickerInput placeholder="DD/MM/YYYY" format="DD/MM/YYYY" />
         <Select
